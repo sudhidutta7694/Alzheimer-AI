@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.env
+.venv/
+venv/
+*.log
+
+# Flask/Reports
+backend/*.pdf
+
+# Node/Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/.vercel/
+frontend/.env.local
+frontend/.env
+frontend/.turbo/
+frontend/.cache/
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build artifacts
+build/
+dist/
