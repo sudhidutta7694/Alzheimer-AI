@@ -30,3 +30,4 @@ Thumbs.db
 # Build artifacts
 build/
 dist/
+trained_model/*.h5
