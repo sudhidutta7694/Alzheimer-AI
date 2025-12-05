@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        <main className='mt-10Su'>{children}</main>
+        <main className='mt-10'>{children}</main>
 
         <footer className="mt-12 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 py-6 text-xs text-slate-500">

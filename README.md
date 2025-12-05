@@ -2,6 +2,8 @@
 
 Clinical-grade Alzheimer MRI classification with explainability, analytics, and professional PDF reporting.
 
+> Note: The included sample MRI image corresponds to a Moderate Demented case for demonstration purposes.
+
 ## Features
 - Flask backend with TensorFlow/Keras model inference
 - Grad-CAM heatmap, occlusion sensitivity, integrated gradients, ROI contributions
@@ -29,12 +31,32 @@ python -m flask run
 # Backend runs at http://localhost:5000
 ```
 
+### Run in Full Explainability Mode
+Use this command to start the backend with full explainability (Grad-CAM, occlusion sensitivity, integrated gradients, ROI contributions) and constrained thread settings for stable local performance:
+
+```zsh
+source .venv/bin/activate
+fuser -k 5000/tcp || true
+TF_NUM_INTEROP_THREADS=1 TF_NUM_INTRAOP_THREADS=1 OMP_NUM_THREADS=1 \
+EXPLAIN_LEVEL=full MODEL_PATH="./trained_model/Alzheimer_Detection_model.h5" \
+python -m backend.app
+```
+
 ### Model
 Place your trained model at:
 ```
 trained_model/Alzheimer_Detection_model.h5
 ```
 Update `backend/config.py` if your path differs.
+
+#### Download Trained Model
+- Direct download (Google Drive):
+	- Link: https://drive.google.com/file/d/11pC8VKGGohiNdM4MhrQypIcRi8WMCD7u/view?usp=sharing
+	- After download, place the file at `trained_model/Alzheimer_Detection_model.h5`.
+- Optional: set a custom path via env for the backend:
+	```zsh
+	export MODEL_PATH="/absolute/path/to/Alzheimer_Detection_model.h5"
+	```
 
 ## Frontend Setup
 ```zsh
@@ -50,6 +72,11 @@ Set `NEXT_PUBLIC_BACKEND_URL` in `frontend/.env.local` if your backend is not at
 1. Open the frontend, upload a brain MRI image.
 2. Click "Analyze Image" to run predictions and view explainability.
 3. Click "Download Report (PDF)" for a professional report.
+
+### Dataset
+- Source dataset (Google Drive folder):
+	- https://drive.google.com/drive/folders/1HiiX2mVuBLSxTOmBimvpksI0eRPwZaEx?usp=drive_link
+	- Ensure usage complies with the dataset’s licensing and consent terms.
 
 ## Report Contents
 - Header with logo and timestamp
