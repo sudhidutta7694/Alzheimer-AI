@@ -30,7 +30,3 @@ Thumbs.db
 # Build artifacts
 build/
 dist/
-
-# Large model artifacts (use Git LFS or external storage)
-trained_model/*
-!trained_model/README.md
